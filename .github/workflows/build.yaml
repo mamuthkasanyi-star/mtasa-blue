@@ -2,7 +2,14 @@ name: Build
 
 # RP fork: Nightly konfiguráció, VERSION_TYPE_UNSTABLE, fork-support netc.dll
 # (lásd Shared/sdk/version.h és https://wiki.multitheftauto.com/wiki/Forks)
-on: [push, workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      windows:
+        description: "Windows kliens fordítása is"
+        type: boolean
+        default: true
 
 jobs:
   windows:
@@ -10,6 +17,8 @@ jobs:
       matrix:
         platform: [win32]
     name: windows-${{ matrix.platform }}
+    # push esetén a commit üzenetben „[csak linux]” → kihagyja a Windows fordítást
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.windows) || (github.event_name == 'push' && !contains(github.event.head_commit.message, '[csak linux]')) }}
     runs-on: windows-2025-vs2026
     steps:
       - uses: actions/checkout@v6
@@ -71,8 +80,9 @@ jobs:
       - name: Install CA certificates
         run: apt-get update && apt-get install -y --no-install-recommends ca-certificates
 
+      # az install_data csak a server/x64 mappát hozza létre, az arm-okat nem
       - name: Install data files
-        run: utils/premake5 install_data
+        run: mkdir -p Bin/server/arm Bin/server/arm64 && utils/premake5 install_data
 
       - name: Create build artifacts
         run: utils/premake5 compose_files
