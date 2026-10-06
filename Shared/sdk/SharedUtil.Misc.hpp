@@ -309,8 +309,8 @@ CDuplicateLineFilter<SReportLine> ms_ReportLineFilter;
 
 #ifdef MTA_CLIENT
 
-    #define PRODUCT_REGISTRY_PATH   "Software\\Multi Theft Auto: San Andreas All"  // HKLM
-    #define PRODUCT_COMMON_DATA_DIR "MTA San Andreas All"                          // C:\ProgramData
+    #define PRODUCT_REGISTRY_PATH   "Software\\RP Kliens MTA"                    // HKLM
+    #define PRODUCT_COMMON_DATA_DIR "RP Kliens MTA"                                // C:\ProgramData
     #define TROUBLE_URL1            "https://help.multitheftauto.com/sa/trouble/?v=_VERSION_&id=_ID_&tr=_TROUBLE_"
 
     //

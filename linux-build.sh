@@ -46,7 +46,7 @@ echo "  BUILD_CONFIG = $BUILD_CONFIG"
 
 # Verify script arguments
 case $BUILD_CONFIG in
-    debug|release) ;;
+    debug|release|nightly) ;;
     *)
         echo "Error: Invalid build configuration" >&2
         exit 1

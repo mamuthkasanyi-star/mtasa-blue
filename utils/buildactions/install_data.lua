@@ -10,7 +10,7 @@ local BASE_URL = "https://mirror-cdn.multitheftauto.com/bdata/"
 local NET_PATH_X86_WIN   = BASE_URL .. "net.dll"
 local NET_PATH_X64_WIN   = BASE_URL .. "net_64.dll"
 local NET_PATH_ARM64_WIN = BASE_URL .. "net_arm64.dll"
-local NETC_PATH_WIN      = BASE_URL .. "netc.dll"
+local NETC_PATH_WIN      = BASE_URL .. "fork-support/netc.dll"
 
 local NET_PATH_X86_LINUX   = BASE_URL .. "net.so"
 local NET_PATH_X64_LINUX   = BASE_URL .. "net_64.so"
