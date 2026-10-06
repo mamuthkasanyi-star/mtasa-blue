@@ -67,6 +67,10 @@ jobs:
         env:
           CI: 'true'
 
+      # a build image-ben nincs CA tanúsítványtár → a net.so letöltése elbukik
+      - name: Install CA certificates
+        run: apt-get update && apt-get install -y --no-install-recommends ca-certificates
+
       - name: Install data files
         run: utils/premake5 install_data
 
